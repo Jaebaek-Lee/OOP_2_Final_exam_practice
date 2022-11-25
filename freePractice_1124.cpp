@@ -73,10 +73,11 @@ int main() {
 	int no;
 	in.seekg(0, ios::end);
 	int size = in.tellg();//63
-	in.seekg(0);
+	//in.seekg(0);
 	while (cin >> no) {
 		if (no != 0 && no * 9 <= size)
 		{
+			in.seekg((no - 1) * 9);in.seekg((no - 1) * 9);
 			cout << "Line <" << no << "> number: ";
 			int num;
 			in >> num;
