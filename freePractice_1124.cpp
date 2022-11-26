@@ -31,6 +31,7 @@ public:
 			myint.num = temp;
 		}
 		//cout << in.gcount();// 2. gcount는 왜 계속 0만 출력하는가? 위에서 나온 in >> temp로 인해 0이 아닌 무언가를 출력해야 하는게 아닌가?
+		//gcount 함수는 get, getline, read 함수에만 반응한다. 일반적인 >> 연산자로 읽은건 계산하지 않는다.
 		return in;
 	}
 	int getNum() {
@@ -42,30 +43,30 @@ private:
 
 int main() {
 	//1번
-	int num;
-	fstream out{ "integers.txt", ios::out };
+	//int num;
+	//fstream out{ "integers.txt", ios::out };
 
-	cout << "Enter the integer.\n";
-	cout << "Enter end-of-file to end input.\n";
-	cout << "? ";
-	while (cin >> num) {
-		MyInteger tempInt(num);
-		out << tempInt;
-		cout << "? ";
-	}
-	out.close();
+	//cout << "Enter the integer.\n";
+	//cout << "Enter end-of-file to end input.\n";
+	//cout << "? ";
+	//while (cin >> num) {
+	//	MyInteger tempInt(num);
+	//	out << tempInt;
+	//	cout << "? ";
+	//}
+	//out.close();
 
-	ifstream in{ "integers.txt", ios::in}; // 3. 실제로 파일에서 하나씩 하나씩 읽어오는 것인가? 아니면 실제 파일의 내용을 통째로 버퍼로 옮겨오는 것인가?
-	cout << '\n';
-	while (in) {
-		MyInteger tempInt(0);
-		cout << in.tellg();
-		in >> tempInt;
-		if (in) {
-			cout << setw(7) << setfill('0') << tempInt.getNum() << '\n';
-		}
-	}
-	in.close();
+	//ifstream in{ "integers.txt", ios::in}; // 3. 실제로 파일에서 하나씩 하나씩 읽어오는 것인가? 아니면 실제 파일의 내용을 통째로 버퍼로 옮겨오는 것인가?
+	//cout << '\n';
+	//while (in) {
+	//	MyInteger tempInt(0);
+	//	cout << in.tellg();
+	//	in >> tempInt;
+	//	if (in) {
+	//		cout << setw(7) << setfill('0') << tempInt.getNum() << '\n';
+	//	}
+	//}
+	//in.close();
 
 	//2번
 	ifstream in("integers.txt", ios::in);
@@ -77,7 +78,7 @@ int main() {
 	while (cin >> no) {
 		if (no != 0 && no * 9 <= size)
 		{
-			in.seekg((no - 1) * 9);in.seekg((no - 1) * 9);
+			in.seekg((no - 1) * 9);
 			cout << "Line <" << no << "> number: ";
 			int num;
 			in >> num;
